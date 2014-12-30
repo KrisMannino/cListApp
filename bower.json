@@ -1,0 +1,26 @@
+{
+  "name": "cListApp",
+  "version": "0.1.0",
+  "homepage": "https://github.com/KrisMannino/cListApp",
+  "authors": [
+    "KrisMannino <KrisMannino@gmail.com>"
+  ],
+  "description": "A Craigslist Search App",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.8",
+    "angular-route": "~1.3.8",
+    "bootstrap": "~3.3.1",
+    "normalize.css": "~3.0.2",
+    "jquery": "~2.1.3"
+  }
+}
