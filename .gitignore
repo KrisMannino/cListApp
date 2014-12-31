@@ -1,0 +1,8 @@
+*.DS_Store
+.idea/
+*.sublime-*
+node_modules/
+bower_components/
+regression/
+dist/
+dist.zip

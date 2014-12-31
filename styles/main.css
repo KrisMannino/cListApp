@@ -1,0 +1,33 @@
+h1{
+  color: white;
+
+}
+.navbar, .sidebar, .mainbody {
+  margin: 0;
+  border: solid black;
+}
+.topnav{
+  margin: 0 0 0 0;
+  background: black;
+  height: 25%;
+}
+#searchbar{
+  margin: 20px 0;
+  height: 1.5em;
+  width: 600px;
+  font-size:3em;
+}
+.sidebar, .mainbody{
+
+  height: 800px;
+
+}
+.side{
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+
+}
+#searchTerm li {
+
+  font-size: 4em;
+}
