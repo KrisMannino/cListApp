@@ -32,7 +32,9 @@
     </div>
     <div class="col-md-8 mainbody">
       <h2>Results</h2>
-      <li ng-repeat="results in newData.postings">{{ results.heading }} - {{results.location.formatted_address}}</li>
+      <li class="resultsList" ng-repeat="results in newData.postings">{{ results.heading }}
+        <br/> {{results.location.formatted_address}}
+        <br/>{{results.images.images}}</li>
 
     </div>
   </div>
