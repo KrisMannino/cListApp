@@ -35,15 +35,19 @@
       console.log('addNewTerm fired');
 
       $scope.searchWord= function(){
+
         var newData = {};
         var theWord = $scope.NewSearch.term;
-        var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888'
+        var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&heading=bike&rpp=60'
+
+        //https://3taps-search-3taps.p.mashape.com/?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&count=20&retvals=heading&rpp=60
+
         function getJSONP(url, cbName){
           var $script = document.createElement('script');
-          $script.src = url + '?callback=' + cbName;
+        //  $script.src = url + '?callback=' + cbName;
           document.body.appendChild($script);
         }
-        getJSONP(url, 'getData');
+        getJSONP(url, 'heading=big bike');
         $http.get(url)
         .success(function(data){
           $scope.newData = data;
@@ -55,6 +59,8 @@
       };
       $scope.searchWord();
       console.log('searchWord fired');
+
+
     }
 
   })
