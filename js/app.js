@@ -38,7 +38,7 @@
 
         var newData = {};
         var theWord = $scope.NewSearch.term;
-        var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&heading=bike&rpp=60'
+        var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&heading='+theWord+'&rpp=20'
 
         //https://3taps-search-3taps.p.mashape.com/?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&count=20&retvals=heading&rpp=60
 
