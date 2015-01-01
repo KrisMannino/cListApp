@@ -22,48 +22,33 @@
       $scope.addNewTerm = function(){
         $http.post('https://clistapp.firebaseio.com/.json', $scope.NewSearch)
         .success(function(data){
-
-
           $scope.searchrecord[data.term]=$scope.NewSearch;
-
         })
         .error(function(err){
           alert(err);
-
         });
       };$scope.addNewTerm();
       console.log('addNewTerm fired');
 
       $scope.searchWord= function(){
-
         var newData = {};
         var theWord = $scope.NewSearch.term;
         var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=images,heading,location&heading='+theWord+'&rpp=&has_image1'
-
-        //https://3taps-search-3taps.p.mashape.com/?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&count=20&retvals=heading&rpp=60
-
         function getJSONP(url, cbName){
-          var $script = document.createElement('script');
-        //  $script.src = url + '?callback=' + cbName;
-          document.body.appendChild($script);
-        }
-        //getJSONP(url, 'heading=big bike');
-        $http.get(url)
-        .success(function(data){
-
-        if(data.postings.source !== "E_BAY"){
-          $scope.newData = data;
-        };
-          console.log(data);
-        })
-        .error(function(err){
-          console.log(err);
-        });
+            var $script = document.createElement('script');
+            document.body.appendChild($script);
+          }
+          $http.get(url)
+          .success(function(data){
+            $scope.newData = data;
+            console.log(data);
+          })
+          .error(function(err){
+            console.log(err);
+          });
       };
       $scope.searchWord();
       console.log('searchWord fired');
-
-
     }
 
   })
