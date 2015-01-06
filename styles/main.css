@@ -1,39 +1,58 @@
+/******Main*********************************************/
+html {
+  background-color: blue;
+}
 .container {
   margin: 0 auto;
   padding: 0;
 }
-
 h1{
   color: white;
+  text-align: center;
 }
 .navbar, .sidebar, .mainbody {
   border: solid black;
 }
-.topnav{
-  background: black;
+
+/*********Navigation****************************************/
+
+.navbar button{
+margin-left: 10%;
+}
+.navbar{
   height: 25%;
+  background-image: url("/images/dark_wood.png");
+}
+.topnav{
+  padding:0;
+  margin: 0;
 }
 #searchbar{
+  margin: 4% auto;
   height: 1.5em;
   width: 600px;
   font-size:3em;
 }
+
+/**********Sidebar**********************************************/
 .sidebar, .mainbody{
   height: 800px;
 }
-
+.sidebar li{
+  list-style-type: none;
+  border-bottom: dashed black;
+  text-align: center;
+}
 #searchTerm li {
   font-size: 4em;
 }
 
-/////RESULTS/////////
-
+/*********RESULTS**********************************************/
 
 .resultsText{
   font-size: .5em;
   width: 5%
   height: 10%;
-
 }
 .resultsImg{
   height: 40px;
