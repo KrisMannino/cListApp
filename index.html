@@ -15,7 +15,7 @@
         <button>register</button>
         <button>logout</button>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 navsearch">
       <button id="searchButton" ng-click="searchTerm()">Search</button>
       <input type="text" id="searchbar" ng-model="NewSearch.term"/>
     </div>
@@ -32,10 +32,12 @@
 
     <div class="col-md-8 mainbody">
       <h2>Results</h2>
-      <ul class="list-inline resultsList">
-        <li class="resultsText" ng-repeat="results in newData.postings"><a>{{ results.heading }}</a>
-          <a> {{results.location.formatted_address}}</a>
-          <img class="resultsImg" ng-repeat="images in results.images" ng-src={{images.images}} />
+      <ul class="resultsList">
+        <li class="resultsText" ng-repeat="results in newData.postings | limitTo:5">
+        <a>{{ results.heading }}</a>
+      </br><img class="resultsImg" ng-repeat="images in results.images | limitTo:1" ng-src={{images.full}} />
+      </br><a> {{results.location.formatted_address}}</a>
+
         </li>
       </ul>
     </div>

@@ -1,6 +1,12 @@
 /******Main*********************************************/
 html {
-  background-color: blue;
+
+  background-image: url("/images/rockywall.png");
+}
+body{
+  max-width: 90%;
+  margin: auto;
+
 }
 .container {
   margin: 0 auto;
@@ -27,41 +33,70 @@ margin-left: 10%;
   padding:0;
   margin: 0;
 }
+#navsearch{
+  margin: auto;
+  width: 75%;
+}
 #searchbar{
   margin: 4% auto;
   height: 1.5em;
-  width: 600px;
+  width: 80%;
   font-size:3em;
 }
 
-/**********Sidebar**********************************************/
+/**********Sidebar & RESULTS**********************************************/
+
+.resultsList{
+  display: -webkit-flex;
+  /*-webkit-justify-content: space-between;*/
+  overflow: auto;
+  list-style-type: none;
+  border-bottom: dashed black;
+
+}
+
 .sidebar, .mainbody{
   height: 800px;
+}
+
+/**********Sidebar**********************************************/
+
+.sidebar{
+  width: 25%;
 }
 .sidebar li{
   list-style-type: none;
   border-bottom: dashed black;
   text-align: center;
+  height: 150px;
+}
+#searchTerm {
+  padding: 0;
 }
 #searchTerm li {
+
   font-size: 4em;
 }
 
+
 /*********RESULTS**********************************************/
 
+.mainbody{
+  width: 75%;
+  padding: 0;
+  background-color: white;
+}
+
+.resultsList li{
+    width: 20%;
+  height: 25%;
+}
 .resultsText{
   font-size: .5em;
-  width: 5%
-  height: 10%;
+  text-align: center;
 }
+
 .resultsImg{
-  height: 40px;
-  width: 40px;
-}
-.resultsList {
-  max-width:130px;
-}
-.resultsList li {
-  max-width: 100%;
-  display: inline-block;
+  height: 120px;
+  width: 120px;
 }
