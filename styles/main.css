@@ -1,34 +1,28 @@
+.container {
+  margin: 0 auto;
+  padding: 0;
+}
+
 h1{
   color: white;
-
 }
 .navbar, .sidebar, .mainbody {
-  margin: 0;
   border: solid black;
 }
 .topnav{
-  margin: 0 0 0 0;
   background: black;
   height: 25%;
 }
 #searchbar{
-  margin: 20px 0;
   height: 1.5em;
   width: 600px;
   font-size:3em;
 }
 .sidebar, .mainbody{
-
   height: 800px;
-
 }
-.side{
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
 
-}
 #searchTerm li {
-
   font-size: 4em;
 }
 
@@ -37,11 +31,18 @@ h1{
 
 .resultsText{
   font-size: .5em;
-  width: 10%
-  height: 8%;
+  width: 5%
+  height: 10%;
 
 }
 .resultsImg{
   height: 40px;
   width: 40px;
+}
+.resultsList {
+  max-width:130px;
+}
+.resultsList li {
+  max-width: 100%;
+  display: inline-block;
 }

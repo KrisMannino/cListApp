@@ -26,17 +26,20 @@
       <h2>Recent Searches</h2>
       <ul id="searchTerm">
         <li  ng-repeat="search in searchrecord">{{ search.term }}</li>
-
       </ul>
-
     </div>
+
+
     <div class="col-md-8 mainbody">
       <h2>Results</h2>
-      <li class="resultsText" ng-repeat="results in newData.postings">{{ results.heading }}
-        <br/> {{results.location.formatted_address}}
-        <br/><img class="resultsImg" ng-repeat="images in results.images" ng-src={{images.images}} /></li>
-
+      <ul class="list-inline resultsList">
+        <li class="resultsText" ng-repeat="results in newData.postings"><a>{{ results.heading }}</a>
+          <a> {{results.location.formatted_address}}</a>
+          <img class="resultsImg" ng-repeat="images in results.images" ng-src={{images.images}} />
+        </li>
+      </ul>
     </div>
+
   </div>
   <script src="bower_components/jquery/dist/jquery.min.js"> </script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"> </script>
