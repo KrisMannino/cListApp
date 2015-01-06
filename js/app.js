@@ -4,17 +4,19 @@
   //  $httpProvider.defaults.headers.post['My-Header']='11a2ac1d6fd4d8a9dcbd221445790888'
   angular.module('CListApp', ['ngRoute'])
   .config(function($httpProvider) {
-    $httpProvider.defaults.headers.post['X-CSRFToken'] = '11a2ac1d6fd4d8a9dcbd221445790888]';
   });
   angular.module('CListApp', ['ngRoute'])
 
   .controller ('SearchController', function($scope, $http){
-    $scope.searchrecord = [{ term: "what"}];
+    $scope.searchrecord = [{ term: "what",
+                             results: ""
+                          }];
 
 
     $scope.searchTerm = function(){
-      $scope.searchrecord.push({
-        term: $scope.NewSearch.term
+      $scope.searchrecord.unshift({
+        term: $scope.NewSearch.term,
+        
 
       });
       console.log("searchTerm fired");
@@ -41,6 +43,15 @@
           $http.get(url)
           .success(function(data){
             $scope.newData = data;
+
+            $http.post('https://clistapp.firebaseio.com/.json', $scope.NewSearch)
+            .success(function(data){
+              $scope.searchrecord[data.results]=$scope.newData;
+            })
+            .error(function(err){
+              alert(err);
+            });
+
             console.log(data);
           })
           .error(function(err){
