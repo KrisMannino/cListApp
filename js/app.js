@@ -1,15 +1,11 @@
 (function() {
 
   'use strict';
-  //  $httpProvider.defaults.headers.post['My-Header']='11a2ac1d6fd4d8a9dcbd221445790888'
-  angular.module('CListApp', ['ngRoute'])
-  .config(function($httpProvider) {
-  });
   angular.module('CListApp', ['ngRoute'])
 
   .controller ('SearchController', function($scope, $http){
     $scope.searchrecord = [{ term: "what",
-                             results: ""
+                              postings: {}
                           }];
 
 
@@ -17,20 +13,12 @@
       $scope.searchrecord.unshift({
         term: $scope.NewSearch.term,
         
-
       });
       console.log("searchTerm fired");
 
-      $scope.addNewTerm = function(){
-        $http.post('https://clistapp.firebaseio.com/.json', $scope.NewSearch)
-        .success(function(data){
-          $scope.searchrecord[data.term]=$scope.NewSearch;
-        })
-        .error(function(err){
-          alert(err);
-        });
-      };$scope.addNewTerm();
-      console.log('addNewTerm fired');
+
+
+
 
       $scope.searchWord= function(){
         var newData = {};
@@ -44,22 +32,41 @@
           .success(function(data){
             $scope.newData = data;
 
-            $http.post('https://clistapp.firebaseio.com/.json', $scope.NewSearch)
-            .success(function(data){
-              $scope.searchrecord[data.results]=$scope.newData;
-            })
-            .error(function(err){
-              alert(err);
-            });
 
-            console.log(data);
+           $scope.newData.keyword = $scope.NewSearch;
+           console.log($scope.newData.postings);
+           $scope.addNewResults = function(){
+             $http.post('https://clistapp.firebaseio.com/.json', $scope.newData)
+             .success(function(data){
+               $scope.searchrecord[data.results]=$scope.newData;
+
+              // return $scope.newData;
+             })
+             .error(function(err){
+               alert(err);
+             });
+           };
+
+           $scope.addNewResults();
+           console.log('addNewResults fired');
+
+           console.log($scope.newData.keyword);
+
+
           })
           .error(function(err){
             console.log(err);
           });
+
+
+
+
+
       };
       $scope.searchWord();
       console.log('searchWord fired');
+
+
     }
 
   })
