@@ -5,6 +5,16 @@
 
   .controller ('SearchController', function($scope, $http){
 
+    $scope.searchrecord = [{ term: "what",
+    postings: {}
+    }];
+
+    $scope.searchTerm = function(){
+      $scope.searchrecord.unshift({
+        term: $scope.NewSearch.term,
+      });
+      console.log("searchTerm fired");
+
       $scope.searchWord= function(){
         var newData = {};
         var theWord = $scope.NewSearch.term;
@@ -47,7 +57,7 @@
       console.log('searchWord fired');
 
 
-    }
+}
 
   })
 }());
