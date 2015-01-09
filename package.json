@@ -17,5 +17,8 @@
   },
   "homepage": "https://github.com/KrisMannino/cListApp",
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "angularfire": "^0.9.1",
+    "firebase": "^2.1.0"
+  }
 }

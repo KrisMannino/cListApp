@@ -80,7 +80,11 @@ margin-left: 10%;
 
 
 /*********RESULTS**********************************************/
+.resultsList a {
+  text-size: 4em;
+  
 
+}
 .mainbody{
   width: 75%;
   padding: 0;
