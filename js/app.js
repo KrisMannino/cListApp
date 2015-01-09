@@ -5,9 +5,13 @@
 
   .controller ('SearchController', function($scope, $http){
 
+    var myDataRef = new Firebase('https://clistapp.firebaseio.com/');
+
     $scope.searchrecord = [{ term: "what",
     postings: {}
     }];
+
+  
 
     $scope.searchTerm = function(){
       $scope.searchrecord.unshift({
@@ -29,6 +33,7 @@
             $scope.newData = data;
              $scope.newData.keyword = $scope.NewSearch;
              console.log($scope.newData.postings);
+
                $scope.addNewResults = function(){
                  $http.post('https://clistapp.firebaseio.com/.json', $scope.newData)
                  .success(function(data){
@@ -39,10 +44,12 @@
                    .error(function(err){
                      alert(err);
                 });
-           };$scope.addNewResults();
+           };//$scope.addNewResults();
            console.log('addNewResults fired');
 
+           myDataRef.push($scope.newData);
            console.log($scope.newData);
+
           })
           .error(function(err){
             console.log(err);
