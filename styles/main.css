@@ -52,6 +52,8 @@ margin-left: 10%;
   overflow: auto;
   list-style-type: none;
   border-bottom: dashed black;
+  margin: 0;
+  width: 100%;
 
 }
 
@@ -66,15 +68,14 @@ margin-left: 10%;
   list-style-type: none;
   border-bottom: dashed black;
   text-align: center;
-  height: 150px;
 }
 #searchTerm {
   padding: 0;
 }
 #searchTerm li {
-  height: 175px;
-  
-  font-size: 4em;
+  height: 193px;
+
+  font-size: 6em;
 }
 
 
@@ -91,12 +92,14 @@ margin-left: 10%;
 }
 
 .resultsList li{
-    width: 20%;
-  height: 175px;
+  min-width: 180px;
+  height: 190px;
+
 }
 .resultsText{
-  font-size: .5em;
+  font-size: .8em;
   text-align: center;
+  text-overflow: clip;
 }
 
 .resultsImg{

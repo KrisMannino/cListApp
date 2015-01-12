@@ -24,7 +24,6 @@
 
   <div class="container side" ng-controller="ResultsController">
     <div class="col-md-4 sidebar">
-      <h2>Recent Searches</h2>
       <ul id="searchTerm">
         <li  ng-repeat="word in newData">{{ word.keyword.term }}</li>
       </ul>
@@ -32,12 +31,11 @@
 
 
     <div class="col-md-8 mainbody">
-      <h2>Results</h2>
 
-        <div ng-repeat="results in newData | limitTo:5">
+        <div ng-repeat="results in newData">
           <ul class="resultsList">
             <a>...</a>
-            <li class="resultsText" ng-repeat="items in results.postings | limitTo:5">
+            <li class="resultsText" ng-repeat="items in results.postings | limitTo:10">
               <a>{{ items.heading }}</a>
             </br><img class="resultsImg" ng-repeat="pics in items.images | limitTo:1" ng-src={{pics.full}} />
             </br><a> {{items.location.metro}}</a>
