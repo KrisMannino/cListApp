@@ -17,7 +17,6 @@
     </div>
     <div class="col-md-8 navsearch">
       <button id="searchButton" ng-click="searchWord()">Search</button>
-      <button id="searchButton" ng-click="getSearches()">getSearches</button>
       <input type="text" id="searchbar" ng-model="NewSearch.term"/>
     </div>
   </div>
@@ -25,14 +24,14 @@
   <div class="container side" ng-controller="ResultsController">
     <div class="col-md-4 sidebar">
       <ul id="searchTerm">
-        <li  ng-repeat="word in newData">{{ word.keyword.term }}</li>
+        <li  ng-repeat="word in newData | reverse">{{ word.keyword.term }}</li>
       </ul>
     </div>
 
 
     <div class="col-md-8 mainbody">
 
-        <div ng-repeat="results in newData">
+        <div ng-repeat="results in newData | reverse">
           <ul class="resultsList">
             <a>...</a>
             <li class="resultsText" ng-repeat="items in results.postings | limitTo:10">
@@ -52,8 +51,14 @@
   <script src="bower_components/angular/angular.min.js"> </script>
   <script src="bower_components/angular-route/angular-route.min.js"> </script>
   <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js"></script>
+
   <script src="js/searches.js"> </script>
+  <script src="js/factories.js"> </script>
+
   <script src="js/controllers.js"> </script>
+
+
 
 
 </body>

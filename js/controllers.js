@@ -2,11 +2,15 @@ var ng = angular
 ;(function(){
   'use strict';
 
-  ng.module('CListApp', ['ngRoute'])
+  ng.module('CListApp', ['ngRoute', 'firebase'])
 
-    .controller ('SearchController', function($scope, $http){
+    .controller ('SearchController', function($scope, $http, $firebase){
 
       var myDataRef = new Firebase('https://clistapp.firebaseio.com/');
+      var sync = $firebase(myDataRef);
+      var profileObject = sync.$asObject();
+
+      profileObject.$bindTo($scope, "data");
 
       $scope.searchWord= function(){
         var newData = [];
@@ -32,24 +36,55 @@ var ng = angular
 
 
 
+  })
+
+  .controller ('ResultsController', function($scope, $http, $firebase, $interval){
+
+    var myDataRef = new Firebase('https://clistapp.firebaseio.com/');
+    var sync = $firebase(myDataRef);
+    var dataKeys;
+    var newData = sync.$asObject();
+
+
+
+      $interval(function(){
+
+            $http.get('https://clistapp.firebaseio.com/.json')
+            .success(function(data){
+              $scope.newData = data;
+              console.log('checked FB');
+
+
+            })
+            .error(function(err){
+              alert(err);
+            })
+          }, 200);
+
+
+
+
 
   })
 
-  .controller ('ResultsController', function($scope, $http){
-
-
-      var vm = this;
-
-      $http.get('https://clistapp.firebaseio.com/.json')
-      .success(function(data){
-        $scope.newData = data;
-        console.log($scope.newData);
-      })
-      .error(function(err){
-        alert(err);
-      });
-
-
-  })
+  .filter('reverse', function() {
+    function toArray(list) {
+      var k, out = [];
+      if( list ) {
+        if( angular.isArray(list) ) {
+          out = list;
+        }
+        else if( typeof(list) === 'object' ) {
+          for (k in list) {
+            if (list.hasOwnProperty(k)) { out.push(list[k]); }
+          }
+        }
+      }
+      return out;
+    }
+    return function(items) {
+      return toArray(items).slice().reverse();
+    };
+  });
 
   }());
