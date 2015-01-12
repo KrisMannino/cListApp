@@ -11,7 +11,7 @@
     postings: {}
     }];
 
-  
+
 
     $scope.searchTerm = function(){
       $scope.searchrecord.unshift({
@@ -19,6 +19,19 @@
       });
       console.log("searchTerm fired");
 
+      $scope.getSearches= function(){
+        $http.get('https://clistapp.firebaseio.com/clistapp/postings',$scope.newData)
+        .success(function(data){
+          $scope.newData=data;
+          console.log($scope.newData);
+          console.log("getSearches");
+        })
+        .error(function(err){
+          alert(err);
+        });
+
+      };
+      $scope.getSearches();
       $scope.searchWord= function(){
         var newData = {};
         var theWord = $scope.NewSearch.term;
