@@ -45,16 +45,43 @@ var ng = angular
     var ref = new Firebase('https://clistapp.firebaseio.com/');
 
     myDataRef.on("value", function(snapshot) {
-      var newData = snapshot.val();
+
       snapshot.forEach(function(fbSearch) {
 
         var key = fbSearch.val();
-        console.log(key.keyword.term);
+        var id = fbSearch.key();
+      console.log(id);
+        var searchWord = key.keyword.term;
 
-        var childData = fbSearch.val();
+        console.log(searchWord);
+
+      /*  $scope.searchAgain= function(word){
+          var newData = [];
+          var theWord = word;
+          var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=images,heading,location&heading='+theWord+'&rpp=&has_image1'
+          function getJSONP(url, cbName){
+            var $script = document.createElement('script');
+            document.body.appendChild($script);
+          }
+          $http.get(url)
+          .success(function(data){
+            $scope.newData = data;
+            $scope.newData.keyword = $scope.NewSearch;
+            myDataRef.set($scope.newData);
+
+            console.log($scope.newData);
+          })
+          .error(function(err){
+            console.log(err);
+          });
+          return newData;
+        }
+        $scope.searchAgain(searchWord);*/
+
+
       });
       console.log(snapshot);
-      console.log(newData);
+
         }, function (errorObject) {
       console.log("not seeing Fb");
     });

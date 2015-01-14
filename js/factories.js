@@ -1,4 +1,4 @@
-;(function() {
+(function() {
 
   'use strict';
   angular.module('CListApp', [])
@@ -7,7 +7,7 @@
     var factory = {};
     var anyWord = "hope";
 
-    factory.searchWord= function(){
+    factory.anyword= function(){
       console.alert(anyWord);
       return anyWord;
 
