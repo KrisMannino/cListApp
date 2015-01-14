@@ -42,8 +42,22 @@ var ng = angular
 
     var myDataRef = new Firebase('https://clistapp.firebaseio.com/');
     var sync = $firebase(myDataRef);
-    var dataKeys;
-    var newData = sync.$asObject();
+    var ref = new Firebase('https://clistapp.firebaseio.com/');
+
+    myDataRef.on("value", function(snapshot) {
+      var newData = snapshot.val();
+      snapshot.forEach(function(fbSearch) {
+
+        var key = fbSearch.val();
+        console.log(key.keyword.term);
+
+        var childData = fbSearch.val();
+      });
+      console.log(snapshot);
+      console.log(newData);
+        }, function (errorObject) {
+      console.log("not seeing Fb");
+    });
 
 
 
@@ -55,11 +69,13 @@ var ng = angular
               console.log('checked FB');
 
 
+
+
             })
             .error(function(err){
               alert(err);
             })
-          }, 200);
+          }, 2000);
 
 
 
