@@ -2,7 +2,7 @@
 <html lang="en" ng-app="CListApp">
 <head>
   <meta charset="UTF-8">
-  <title>CList</title>  
+  <title>CList</title>
   <link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="styles/main.css">
@@ -17,26 +17,29 @@
     </div>
     <div class="col-md-8 navsearch">
       <button id="searchButton" ng-click="searchWord()">Search</button>
-      <input type="text" id="searchbar" ng-model="NewSearch.term"/>
+
+      <input type="text" id="searchBar" ng-model="NewSearch.term"/>
     </div>
   </div>
 
   <div class="container side" ng-controller="ResultsController">
     <div class="col-md-4 sidebar">
+      <button id="searchAgainButton" ng-click="searchAgain()">SearchAgain</button>
+
       <ul id="searchTerm">
-        <li  ng-repeat="word in newData | reverse">{{ word.keyword.term }}</li>
+        <li  ng-repeat="word in newData">{{ word.keyword.term}}</li>
       </ul>
     </div>
 
 
     <div class="col-md-8 mainbody">
 
-        <div ng-repeat="results in newData | reverse">
+        <div ng-repeat="results in newData">
           <ul class="resultsList">
             <a>...</a>
-            <li class="resultsText" ng-repeat="items in results.postings | limitTo:10">
+            <li class="resultsText" ng-repeat="items in results.postings | limitTo:10 ">
               <a>{{ items.heading }}</a>
-            </br><img class="resultsImg" ng-repeat="pics in items.images | limitTo:1" ng-src={{pics.full}} />
+            </br><img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} />
             </br><a> {{items.location.metro}}</a>
 
             </li>
@@ -53,8 +56,9 @@
   <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
   <script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js"></script>
 
-  <script src="js/searches.js"> </script>
-  <script src="js/factories.js"> </script>
+  <script src="js/filters.js"> </script>
+
+     <script src="js/factories.js"> </script>
 
   <script src="js/controllers.js"> </script>
 
