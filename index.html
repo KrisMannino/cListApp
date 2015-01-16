@@ -40,10 +40,12 @@
             <li class="resultsText" ng-repeat="items in results.postings | limitTo:10 ">
               <a>{{ items.heading }}</a>
             </br><img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} />
-            </br><a> {{items.location.metro}}</a>
+          </br><a> {{items.location.metro}}</a>
+          </br><a>{{items.price | currency : symbol : fractionSize}}</a>
 
-            </li>
-          </ul>
+        </li>
+      </ul>
+
         </div>
 
     </div>

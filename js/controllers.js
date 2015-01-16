@@ -56,12 +56,12 @@ var ng = angular
     var sync = $firebase(myDataRef);
     var profileObject = sync.$asObject();
 
-    profileObject.$bindTo($scope, "data");
+    //profileObject.$bindTo($scope, "data");
 
     $scope.searchWord= function(){
       var newData = [];
       var theWord = $scope.NewSearch.term;
-      var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=images,heading,location&heading='+theWord+'&rpp=&has_image1'
+      var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=images,price,heading,location&heading='+theWord+'&rpp=20&has_image1'
       function getJSONP(url, cbName){
         var $script = document.createElement('script');
         document.body.appendChild($script);
