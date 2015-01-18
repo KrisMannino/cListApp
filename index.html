@@ -48,7 +48,6 @@
             <li class="resultsText" ng-repeat="items in results.postings | limitTo:10 ">
               <a>{{ items.heading }}</a>
             </br><img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} />
-          </br><a> {{items.location.metro}}</a>
         </br><a> {{items.source }}</a><a>:  </a><a>{{items.price | currency : symbol : fractionSize}}</a>
 <!--        </br><a> {{items.external_url}}</a>
 -->

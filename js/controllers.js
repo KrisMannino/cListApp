@@ -86,16 +86,15 @@ var ng = angular
       .success(function(data){
         $scope.newData = data;
         $scope.newData.keyword = $scope.NewSearch;
+        $scope.NewSearch="";
         myDataRef.push($scope.newData);
           console.log($scope.newData);
         })
         .error(function(err){
           console.log(err);
         });
-      }
-
-
-}
+    }
+  }
 ])
 
       /*  $scope.searchAgain= function(word){
