@@ -67,8 +67,17 @@ var ng = angular
 
     $scope.searchWord= function(){
       var newData = [];
-      var theWord = $scope.NewSearch.term;
-      var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=images,price,heading,location&heading='+theWord+'&rpp=20&has_image1'
+      var typedWord = $scope.NewSearch.term;
+      console.log(typedWord);
+
+      var replaceFunction = function(word){
+      var newWord = word.replace(/\s+/,"&");
+      return newWord;
+      };
+      var theWord = '"'+typedWord+'"';
+
+      console.log(theWord);
+      var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=images,price,external_url,source,heading,location&heading='+theWord+'&rpp=20&has_image1&location.metro=USA-NAS'
       function getJSONP(url, cbName){
         var $script = document.createElement('script');
         document.body.appendChild($script);

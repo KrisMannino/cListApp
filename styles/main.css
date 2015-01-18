@@ -4,7 +4,7 @@ html {
   background-image: url("/images/rockywall.png");
 }
 body{
-  max-width: 90%;
+  max-width: 92%;
   margin: auto;
 
 }
@@ -21,9 +21,6 @@ h1{
 }
 
 /*********TopNavigation****************************************/
-.topnav h1{
-  margin-left: 10px;
-}
 
 /*********Navigation****************************************/
 
@@ -39,10 +36,10 @@ margin-left: 0;
   padding: 0.5em;
   background-image: url("/images/dark_wood.png");  border-style: solid;
   border-width: 30px;
-  border-top-color: #e5e5e5;
-  border-right-color: #eee;
-  border-bottom-color: #e5e5e5;
-  border-left-color: #eee;
+  border-top-color: #4c4c4c;
+  border-right-color: #666;
+  border-bottom-color: #4c4c4c;
+  border-left-color: #666;
 }
 .topnav{
   padding:0;
@@ -141,7 +138,7 @@ margin-left: 0;
   margin-right: 0;
 }
 .btnList{
-  margin-left: 100px;
+  margin: auto;
 }
 .btnList .listedBtn:first-child {
   border-top-right-radius:0;
