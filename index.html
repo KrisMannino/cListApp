@@ -11,25 +11,28 @@
   <div class="container navbar" ng-controller="SearchController">
     <div class="col-md-4 topnav">
       <h1>C-Now</h1>
-        <button>login</button>
-        <button>register</button>
-        <button>logout</button>
+      <div class="btnList">
+        <button class="listedBtn btn btn-default">login</button>
+        <button class="listedBtn btn btn-default">register</button>
+        <button class="listedBtn btn btn-default">logout</button>
+      </div>
     </div>
-    <div class="col-md-8 navsearch">
-      <button id="searchButton" ng-click="searchWord()">Search</button>
+    <div class="col-md-8 navsearch form-group">
+      <button class="btn btn-default" id="searchButton" ng-click="searchWord()">Search</button>
 
-      <input type="text" id="searchBar" ng-model="NewSearch.term"/>
+      <input type="text" class="form-control"id="searchBar" placeholder="Search" ng-model="NewSearch.term"/>
     </div>
   </div>
 
   <div class="container side" ng-controller="ResultsController">
     <div class="col-md-4 sidebar">
-      <button id="searchAgainButton" ng-click="searchAgain()">SearchAgain</button>
+      <button class="btn btn-default" id="searchAgainButton" ng-click="searchAgain()">SearchAgain</button>
 
       <ul id="searchTerm">
-        <li  ng-repeat="word in newData">{{ word.keyword.term}}</li>
+        <li  ng-repeat="word in newData ">{{ word.keyword.term }}</li>
       </ul>
     </div>
+
 
 
     <div class="col-md-8 mainbody">
@@ -52,18 +55,23 @@
 
   </div>
   <script src="bower_components/jquery/dist/jquery.min.js"> </script>
+
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"> </script>
   <script src="bower_components/angular/angular.min.js"> </script>
   <script src="bower_components/angular-route/angular-route.min.js"> </script>
   <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
   <script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js"></script>
 
-  <script src="js/filters.js"> </script>
+
+<!--  <script src="js/factories.js"> </script>
+-->  <script src="js/filters.js"> </script>
 
 
   <script src="js/controllers.js"> </script>
-  <script src="js/factories.js"> </script>
-  
+
+
+
+
 
 
 

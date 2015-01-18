@@ -4,7 +4,16 @@ var ng = angular
 
   ng.module('CListApp', ['ngRoute', 'firebase'])
 
-  .controller("ResultsController",[ "$scope", "$firebase", "$http", "searchFactory", function($scope, $firebase, $interval, $http, searchFactory) {
+  .factory('helloFactory', function() {
+    return function(name) {
+      this.name = name;
+      this.hello = function() {
+        return "Hello " + this.name;
+      };
+    };
+  })
+
+  .controller("ResultsController",[ "$scope", "$firebase", "$http","helloFactory", function($scope, $firebase, $interval, $http, helloFactory) {
     var fbDataRef = new Firebase('https://clistapp.firebaseio.com/');
     var sync = $firebase(fbDataRef);
     var fbObject = sync.$asObject();
@@ -37,8 +46,9 @@ var ng = angular
           //sync.$update(fbUpdateData)
         })
       })
-  }
-])
+    /*$scope.sayHi = function(){$scope.helloFactory.hello();};
+    $scope.sayHi("tony");*/
+  }])
 
 
 
@@ -109,5 +119,7 @@ var ng = angular
     if(event.keyCode == 13){
       $('#searchButton').click();
     }
-  });
+  })
+
+
   }());

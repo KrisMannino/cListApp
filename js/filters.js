@@ -2,7 +2,7 @@ var ng = angular
 ;(function(){
   'use strict';
 
-  ng.module('CListApp', ['ngRoute', 'firebase','ResultsController'])
+  ng.module('CListApp', [])
   .filter('reverse', function() {
         function toArray(list) {
            var k, out = [];
