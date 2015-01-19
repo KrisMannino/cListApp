@@ -1,0 +1,18 @@
+<div class="col-md-8 mainbody" ng-controller="ShowController">
+
+
+      <a>...</a>
+        <div ng-show="!results.postings" style="display:none">There is no sites avaiable for you.</div>
+
+        <a>{{ items.heading }}</a>
+      </br><img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} />
+    </br><a> {{items.source }}</a><a>:  </a><a>{{items.price | currency : symbol : fractionSize}}</a>
+    <td>
+      <a class="btn btn-primary" href="/#/{{contactId}}">Show</a>
+      <a class="btn btn-primary" href="/#/{{contactId}}/edit">Edit</a>
+      <button ng-click="addressctrl.removeContact(contactId)" class="btn btn-default">remove</button>
+    </td>
+
+
+
+</div>

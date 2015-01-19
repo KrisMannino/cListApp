@@ -2,7 +2,6 @@
 <html lang="en" ng-app="CListApp">
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="http://icons.iconarchive.com/icons/ariil/alphabet/256/Letter-C-icon.png">
   <title>CList</title>
   <link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
@@ -41,35 +40,8 @@
 
 
 
-    <div class="col-md-8 mainbody" ng-controller="ResultsController">
+    <div ng-view></div>
 
-        <div ng-repeat="(resultID, results) in newData">
-          <ul class="resultsList">
-            <a>...</a>
-            <li class="resultsText" ng-repeat="items in results.postings | limitTo:10 ">
-              <div class="btn-group btn-group-xs" role="group">
-              <td>
-                <a type="button" class="btn btn-primary" href="/#/{{resultId}}">
-                  <span class="glyphicon glyphicon-plus"></span>
-                </a>
-                <a type="button" ng-click="ResultsController.removeContact()" class="btn btn-xs btn-default">
-                  <span class="glyphicon glyphicon-remove"></span>
-                </a>
-              </td>
-            </div>
-          </br><div ng-show="!results.postings" style="display:none">There is no sites avaiable for you.</div>
-
-              <a>{{ items.heading }}</a>
-            </br><img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} />
-        </br><a> {{items.source }}</a><a>:  </a><a>{{items.price | currency : symbol : fractionSize}}</a>
-<!--        </br><a> {{items.external_url}}</a>
--->
-        </li>
-      </ul>
-
-        </div>
-
-    </div>
 
   </div>
   <script src="bower_components/jquery/dist/jquery.min.js"> </script>
@@ -86,7 +58,6 @@
 
 
   <script src="js/controllers.js"> </script>
-
 
 
 

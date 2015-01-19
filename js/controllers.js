@@ -4,6 +4,20 @@ var ng = angular
 
   ng.module('CListApp', ['ngRoute', 'firebase'])
 
+  .config(function($routeProvider){
+    $routeProvider
+    .when('/', {
+      templateUrl: 'index.html',
+      controller: 'MainController'
+    })
+    .when('/:id', {
+      templateUrl: 'views/results.html',
+      controller: 'ShowController',
+    })
+
+    .otherwise({redirectTo: '/'});
+  })
+
   .factory('helloFactory', function() {
     return function(name) {
       this.name = name;
@@ -13,7 +27,8 @@ var ng = angular
     };
   })
 
-  .controller("ResultsController",[ "$scope", "$firebase", "$http","helloFactory", function($scope, $firebase, $interval, $http, helloFactory) {
+
+  .controller("ResultsController",[ "$scope", "$firebase", "$http","helloFactory","$location", "$routeParams", function($scope, $firebase, $interval, $http, helloFactory, $location, $routeParams) {
     var fbDataRef = new Firebase('https://clistapp.firebaseio.com/');
     var sync = $firebase(fbDataRef);
     var fbObject = sync.$asObject();
@@ -48,6 +63,26 @@ var ng = angular
       })
     /*$scope.sayHi = function(){$scope.helloFactory.hello();};
     $scope.sayHi("tony");*/
+    $scope.removeContact = function(){
+      sync.$remove($scope.id);
+
+
+
+
+      console.log(id);
+      $http.get('https://clistapp.firebaseio.com/' + id + '.json')
+      .success(function(data){
+        this.show = data;
+      })
+      .error(function(err){
+        console.log(err);
+      });
+    };
+
+  }])
+
+  .controller('ShowController',["$scope", "$firebase","$http","$routeParams","$location", function($http, $routeParams, $scope, $firebase, $location){
+
   }])
 
 
@@ -56,8 +91,7 @@ var ng = angular
 
 
 
-
-  .controller ('SearchController',[ "$scope", "$http", "$firebase", function($scope, $http, $firebase){
+  .controller ('MainController',[ "$scope", "$http", "$firebase", function($scope, $http, $firebase){
 
    var myDataRef = new Firebase('https://clistapp.firebaseio.com/');
     var sync = $firebase(myDataRef);
@@ -77,7 +111,7 @@ var ng = angular
       var theWord = '"'+typedWord+'"';
 
       console.log(theWord);
-      var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=images,price,external_url,source,heading,location&heading='+theWord+'&rpp=20&has_image1&location.metro=USA-NAS'
+      var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=id,images,price,external_url,source,heading,location&heading='+theWord+'&rpp=20&has_image1&location.metro=USA-NAS'
       function getJSONP(url, cbName){
         var $script = document.createElement('script');
         document.body.appendChild($script);
@@ -96,6 +130,10 @@ var ng = angular
     }
   }
 ])
+
+
+
+
 
       /*  $scope.searchAgain= function(word){
           var newData = [];
