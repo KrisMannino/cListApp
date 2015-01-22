@@ -1,0 +1,32 @@
+<div class="container side" ng-controller="ResultsController">
+  <div class="col-md-4 sidebar">
+    <button class="btn btn-default" id="searchAgainButton" ng-click="searchAgain()">SearchAgain</button>
+    <ul id="searchTerm">
+      <li  ng-repeat="(key, post) in newData | orderBy">
+        <a href="{{$id}}">{{post.keyword.term}}{{key}}</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-8 mainbody" ng-controller="ResultsController">
+    <div ng-repeat="results in newData ">
+      <ul class="resultsList">
+        <li class="resultsText" ng-repeat="items in results.postings | limitTo:10 ">
+          <div class="btn-group btn-group-xs" role="group">
+            <td>
+              <a type="button" class="btn btn-primary" href="/#/{{name}}">
+                <span class="glyphicon glyphicon-plus"></span>
+              </a>
+              <a type="button" ng-click="removeContact(items)" class="btn btn-xs btn-default">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
+            </td>
+          </div></br>
+          <div ng-show="!results.postings" style="display:none">There is no sites avaiable for you.</div>
+          <a>{{ items.heading }}</a></br>
+          <img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} /></br>
+          <a> {{items.source }}</a><a>:  </a><a>{{items.price | currency : symbol : fractionSize}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

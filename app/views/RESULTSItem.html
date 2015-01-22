@@ -1,0 +1,29 @@
+<div class="col-md-8 mainbody" ng-controller="ShowController">
+
+  <div class="btn-group btn-group-xs" role="group">
+    <td>
+      <a type="button" class="btn btn-primary" href="/#/">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+      <a type="button" class="btn btn-default" ng-click"goBoom()">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+      <a type="button" ng-click="removeContact(items)" class="btn btn-xs btn-default">
+        <span class="glyphicon glyphicon-remove"></span>
+      </a>
+    </td>
+  </div></br>
+  <h1>Show{{show.resultItem.heading}}</h1>
+  <h3>Edit {{ show.resultItem.$id }}</h3>
+  <img ng-src={{show.postings.image}}</img>
+
+  <a>{{ show.resultItem.items.heading }}</a></br>
+  <img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} /></br>
+  <a> {{result.item.source }}</a><a>:  </a><a>{{show.resultItem.items.price | currency : symbol : fractionSize}}</a>
+  <p>hello what {{$route.current.scope.name}}</p>
+  <pre>$location.path() = {{$location.path()}}</pre>
+  <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+  <pre>$route.current.params = {{$route.current.params}}</pre>
+  <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+  <pre>$routeParams = {{$routeParams}}</pre>
+</div>
