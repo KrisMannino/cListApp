@@ -1,48 +1,77 @@
-module.exports = function (grunt) {
 
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+  'use strict';
 
-    connect: {
-      server: {
+  module.exports = function (grunt) {
+    require('load-grunt-tasks')(grunt);
+
+    grunt.initConfig({
+      htmlhint: {
+        build: {
+          options: {
+            'tag-pair': true,
+            'tagname-lowercase': true,
+            'attr-lowercase': true,
+            'attr-value-double-quotes': true,
+            'doctype-first': true,
+            'spec-char-escape': true,
+            'id-unique': true,
+            'head-script-disabled': true,
+            'style-disabled': true
+          },
+          src: ['app/index.html']
+        }
+      },
+      sass: {
+        build: {
+          files: {
+            'app/styles/main.css': 'app/styles/main.css'
+          }
+        }
+      },
+
+      connect: {
         options: {
-          hostname: '*',
-          port: grunt.option('port') || 9001,
-          base: ['<%= buildDir %>/', './'],
-          livereload: false
+          port: 3333,
+          base: 'app',
+          hostname: 'localhost',
+          livereload: 35729
+        },
+        server: {
+          open: true
+        }
+      },
+
+      watch: {
+        configFiles: {
+          files: ['Gruntfile.js', 'bower.json', 'package.json'],
+          options: {
+            reload: true
+          }
+        },
+        html: {
+          files: ['app/views/{,*/}*.html'],
+          tasks: ['htmlhint']
+        },
+        bower: {
+          files: ['./bower.json'],
+          tasks: ['wireDependencies']
+        },
+        js: {
+          files: ['app/scripts/{,*/}*.js'],
+          tasks: ['newer:jshint:all']
+        },
+        livereload: {
+          options: { livereload: true },
+          files: ['app/**/*']
+        },
+        sass: {
+          files: ['app/styles/{,*/}*.{scss,sass}'],
+          tasks: ['sass']
         }
       }
-    },
-    watch: {
-      livereload: {
-        options: {
-          livereload: true,
-        },
-        files: [
-        '<%= buildDir %>/**',
-        '<%= copy.img.src %>',
-        '<%= copy.fonts.src %>',
-        '<%= copy.js.src %>'
-        ]
-      }
-    }
-  });
-    grunt.loadNpmTasks('grunt-contrib-livereload');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-serve');
 
-    grunt.registerTask('serve', [
-    'connect',
-    'watch'
-    ]);
+});
 
-
-
-
-  // Tell Grunt what to do when we type "grunt" into the terminal
-  grunt.registerTask('default', [
-  'grunt-contrib-livereload',
-  'grunt-contrib-watch',
-  'grunt-serve'
-  ]);
+grunt.registerTask('serve', ['connect:server', 'watch', 'livereload']);
+grunt.registerTask('default', []);
 };

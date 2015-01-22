@@ -16,7 +16,15 @@
     "url": "https://github.com/KrisMannino/cListApp/issues"
   },
   "homepage": "https://github.com/KrisMannino/cListApp",
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.9.0",
+    "grunt-contrib-livereload": "^0.1.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-htmlhint": "^0.4.1",
+    "grunt-sass": "^0.17.0",
+    "load-grunt-tasks": "^2.0.0"
+  },
   "dependencies": {
     "angularfire": "^0.9.1",
     "firebase": "^2.1.0"
