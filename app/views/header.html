@@ -11,6 +11,7 @@
   </div>
   <div class="col-md-8 navsearch form-group">
     <button class="btn btn-default" id="searchButton" ng-click="searchWord()">Search</button>
+    <button class="btn btn-default" id="searchAgainButton" ng-click="searchAgain()">SearchAgain</button>
     <input type="text" class="form-control" id="searchBar" placeholder="Search" ng-model="NewSearch.term" ng-keyup="$event.keyCode == 13 && searchWord()"/>
   </div>
 </div>

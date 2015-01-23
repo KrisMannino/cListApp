@@ -1,6 +1,5 @@
 <div class="container side" ng-controller="ResultsController">
   <div class="col-md-4 sidebar">
-    <button class="btn btn-default" id="searchAgainButton" ng-click="searchAgain()">SearchAgain</button>
     <ul id="searchTerm">
       <li  ng-repeat="(key, post) in newData | orderBy: '-$id'">
         <td>
