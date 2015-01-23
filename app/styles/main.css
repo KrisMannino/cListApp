@@ -19,6 +19,12 @@ h1{
 .navbar, .sidebar, .mainbody {
   border: solid black;
 }
+a{
+  color: black;
+}
+a:hover{
+  color: #337ab7;
+}
 
 /*********TopNavigation****************************************/
 
@@ -95,6 +101,9 @@ margin-left: 0;
 
 
 /*********RESULTS**********************************************/
+.fbID{
+  font-size: small;
+}
 .resultsList a {
   text-size: 4em;
 

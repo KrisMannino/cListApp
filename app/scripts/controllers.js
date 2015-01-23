@@ -49,12 +49,13 @@ var ng = angular
 
   .controller("ResultsController",[ "$scope", "$firebase", "$http","$location", "$routeParams", function($scope, $firebase, $http, $location, $routeParams) {
     var fbDataRef = new Firebase('https://clistapp.firebaseio.com/');
-    var sync = $firebase(fbDataRef);
-    var fbObject = sync.$asObject();
+/*    fbDataRef.setWithPriority( keyword );
+*/    var sync = $firebase(fbDataRef);
+    var fbArray = sync.$asArray();
+$scope.newData = fbArray;
 
-
-    fbObject.$bindTo($scope, "newData");
-    $scope.newData= sync.$asArray();
+/*    fbObject.$bindTo($scope, "newData");
+*/
 
     var fbSnapshot = {};
         fbDataRef.once('value', function(dataSnapshot) {
@@ -184,11 +185,11 @@ var ng = angular
     });
 
 */
-  $('#searchBar').keypress(function(event){
+  /*$('#searchBar').keypress(function(event){
     if(event.keyCode == 13){
       $('#searchButton').click();
     }
-  })
+  });*/
 
 
   }());

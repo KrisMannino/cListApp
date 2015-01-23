@@ -31,7 +31,7 @@
 
       connect: {
         options: {
-          port: 3333,
+          port: 8000,
           base: 'app',
           hostname: 'localhost',
           livereload: 35729

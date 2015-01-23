@@ -2,13 +2,15 @@
   <div class="col-md-4 sidebar">
     <button class="btn btn-default" id="searchAgainButton" ng-click="searchAgain()">SearchAgain</button>
     <ul id="searchTerm">
-      <li  ng-repeat="(key, post) in newData | orderBy">
-        <a href="{{$id}}">{{post.keyword.term}}{{key}}</a></li>
+      <li  ng-repeat="(key, post) in newData | orderBy: '-$id'">
+        <a href="{{$id}}">{{post.keyword.term}}</a>
+        <div class="fbID">{{$id}}</div>
+        </li>
     </ul>
   </div>
 
   <div class="col-md-8 mainbody" ng-controller="ResultsController">
-    <div ng-repeat="results in newData ">
+    <div ng-repeat="results in newData | orderBy: '-$id'">
       <ul class="resultsList">
         <li class="resultsText" ng-repeat="items in results.postings | limitTo:10 ">
           <div class="btn-group btn-group-xs" role="group">
@@ -22,6 +24,7 @@
             </td>
           </div></br>
           <div ng-show="!results.postings" style="display:none">There is no sites avaiable for you.</div>
+          <div class="fbID">{{$id}}</div>
           <a>{{ items.heading }}</a></br>
           <img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} /></br>
           <a> {{items.source }}</a><a>:  </a><a>{{items.price | currency : symbol : fractionSize}}</a>
