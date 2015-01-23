@@ -27,17 +27,11 @@ var ng = angular
       };
     };
   })
-  .controller('Ctrl', function($scope) {
-    $scope.reverse = function(array) {
-      var copy = [].concat(array);
-      return copy.reverse();
-    }
-  })
 
   .controller('ShowController', function($http, $routeParams){
     var vm = this;
     var id = $routeParams.id;
-    $http.get('https://clistapp.firebaseio.com/' + id )
+    $http.get('https://clistapp.firebaseio.com/' + id + '.json')
     .success(function(data){
       vm.contact = data;
     })

@@ -3,7 +3,13 @@
     <button class="btn btn-default" id="searchAgainButton" ng-click="searchAgain()">SearchAgain</button>
     <ul id="searchTerm">
       <li  ng-repeat="(key, post) in newData | orderBy: '-$id'">
-        <a href="{{$id}}">{{post.keyword.term}}</a>
+        <td>
+
+          <a type="button" ng-click="removeContact(items)" class="btn btn-xs btn-default" id="removeBtn">
+            <span class="glyphicon glyphicon-remove"></span>
+          </a>
+        </td>
+        <a href="{{$id}}" class"resultWord">{{post.keyword.term}}</a>
         <div class="fbID">{{$id}}</div>
         </li>
     </ul>
@@ -11,8 +17,8 @@
 
   <div class="col-md-8 mainbody" ng-controller="ResultsController">
     <div ng-repeat="results in newData | orderBy: '-$id'">
-      <ul class="resultsList">
-        <li class="resultsText" ng-repeat="items in results.postings | limitTo:10 ">
+      <ul class="resultsList" >
+        <li class="resultsText" ng-repeat="items in results.postings | limitTo:10 " ng-show"results.postings">
           <div class="btn-group btn-group-xs" role="group">
             <td>
               <a type="button" class="btn btn-primary" href="/#/{{name}}">
@@ -23,12 +29,16 @@
               </a>
             </td>
           </div></br>
-          <div ng-show="!results.postings" style="display:none">There is no sites avaiable for you.</div>
+
           <div class="fbID">{{$id}}</div>
           <a>{{ items.heading }}</a></br>
           <img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} /></br>
           <a> {{items.source }}</a><a>:  </a><a>{{items.price | currency : symbol : fractionSize}}</a>
         </li>
+        <div class="noResults" ng-show="!results.postings" >
+          <p>There are no results avaiable for you.</p>
+
+        </div>
       </ul>
     </div>
   </div>

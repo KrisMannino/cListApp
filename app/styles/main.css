@@ -104,9 +104,11 @@ margin-left: 0;
 .fbID{
   font-size: small;
 }
-.resultsList a {
+.resultWord {
   text-size: 4em;
-
+}
+#removeBtn{
+  float: left;
 
 }
 .mainbody{
@@ -131,6 +133,19 @@ margin-left: 0;
 .resultsImg{
   height: 120px;
   width: 120px;
+}
+.noResults{
+  height: 254px;
+padding-left: 300px;
+  text-align: center;
+  background: url("http://gifvault.com/img/2014/6/dancing-gif-110-16134-hd-wallpapers.jpg") no-repeat;
+  background-size: 250px 250px;
+}
+.noResults p{
+padding-top: 100px;
+  font-size: 2em;
+  text-align: center;
+  vertical-align: center;
 }
 /*********BUTTONS**********************************************/
 
