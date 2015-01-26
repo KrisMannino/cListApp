@@ -1,7 +1,7 @@
-<header ng-include="'views/header.html'"></header>
 
-<h1>{{show.contact.heading}} hello</h1>
 
-<p>what{{show.contact.postings}}</p>
+<h1>{{contact.heading}} hello</h1>
+
+<p>what{{show.contact}}</p>
 <ul class="resultsList">
-  <li class="resultsText" ng-repeat="items in show.contact.postings"><a>{{items.heading}}</a></li></ul>
+  <li class="resultsText" ng-repeat="items in contact"><a>{{items.heading}}</a></li></ul>

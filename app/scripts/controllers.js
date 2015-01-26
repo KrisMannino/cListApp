@@ -2,22 +2,7 @@ var ng = angular
 ;(function(){
   'use strict';
 
-  ng.module('CListApp', ['ngRoute', 'firebase'])
-
-  .config(function($routeProvider){
-    $routeProvider
-    .when('/', {
-      templateUrl: 'views/main.html',
-      controller: 'MainController'
-    })
-    .when('/:id', {
-      templateUrl: 'views/contact.html',
-      controller: 'ShowController',
-      controllerAs: 'show'
-    })
-
-    .otherwise({redirectTo: '/'});
-  })
+  ng.module('CListApp')
 
   .factory('helloFactory', function() {
     return function(name) {
@@ -28,29 +13,34 @@ var ng = angular
     };
   })
 
-  .controller('ShowController', function($http, $routeParams){
-    var vm = this;
+  .controller('ItemController',[ "$http", "$routeParams", "$firebase", "$location", "$scope",function($http, $routeParams, $firebase, $location, $scope){
     var id = $routeParams.id;
-    $http.get('https://clistapp.firebaseio.com/' + id + '.json')
-    .success(function(data){
-      vm.contact = data;
-    })
-    .error(function(err){
-      console.log(err);
-    });
-  })
+    var ref = new Firebase("https://clistapp.firebaseio.com/"+ id);
+
+    var fbSnapshot = {};
+    ref.once('value', function(dataSnapshot) {
+      fbSnapshot = dataSnapshot;
+      var fbPostShot = {};
+      $scope.fbPostShot = fbSnapshot.val();
+      console.log($scope.fbPostShot);
+      })
+
+  }])
 
 
-  .controller("ResultsController",[ "$scope", "$firebase", "$http","$location", "$routeParams", function($scope, $firebase, $http, $location, $routeParams) {
+  .controller("ResultsController",[ "$scope", "$firebase", "$http", "$location", "$routeParams", function($scope, $firebase, $http, $location, $routeParams) {
     var fbDataRef = new Firebase('https://clistapp.firebaseio.com/');
 /*    fbDataRef.setWithPriority( keyword );
 */    var sync = $firebase(fbDataRef);
     var fbArray = sync.$asArray();
-$scope.newData = fbArray;
+      $scope.newData = fbArray;
 
 /*    fbObject.$bindTo($scope, "newData");
 */
-
+    $scope.removeItem = function(id){
+      sync.$remove(id);
+      console.log("removing " + id)
+    };
     var fbSnapshot = {};
         fbDataRef.once('value', function(dataSnapshot) {
         fbSnapshot = dataSnapshot;
@@ -58,13 +48,14 @@ $scope.newData = fbArray;
 
         console.log(fbSnapshotdata);
 
-        fbSnapshot.forEach(function(fbSearch) {
+       fbSnapshot.forEach(function(fbSearch) {
           var key = fbSearch.val();
-          var id = fbSearch.key();
+          var fbId = fbSearch.key();
+
           var searchKey = key.keyword.term;
           var fbUpdateData;
-          console.log(searchKey);
-          console.log(id);
+          /*console.log(searchKey);
+          console.log("id "+fbId);*/
 
         })
       })
@@ -77,16 +68,8 @@ $scope.newData = fbArray;
       $scope.go = function ( path ) {
         console.log("go to path");
         console.log("this is the path "+path);
-
-
-/*        $location.path( path );
-*/      };
-
+   };
       /*sync.$remove($scope.id);
-
-
-
-
       console.log(id);
       $http.get('https://clistapp.firebaseio.com/' + id + '.json')
       .success(function(data){
@@ -98,17 +81,6 @@ $scope.newData = fbArray;
     };
 
   }])
-
-  .controller('ShowController',["$scope", "$firebase","$http","$routeParams","$location", function($scope, $firebase, $http, $routeParams, $location){
-
-  }])
-
-
-
-
-
-
-
   .controller ('MainController',[ "$scope", "$http", "$firebase", function($scope, $http, $firebase){
 
    var myDataRef = new Firebase('https://clistapp.firebaseio.com/');
@@ -122,10 +94,6 @@ $scope.newData = fbArray;
       var typedWord = $scope.NewSearch.term;
       console.log(typedWord);
 
-      var replaceFunction = function(word){
-      var newWord = word.replace(/\s+/,"&");
-      return newWord;
-      };
       var theWord = '"'+typedWord+'"';
 
       console.log(theWord);
@@ -148,42 +116,4 @@ $scope.newData = fbArray;
     }
   }
 ]);
-
-
-
-
-
-      /*  $scope.searchAgain= function(word){
-          var newData = [];
-          var theWord = word;
-          var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=images,heading,location&heading='+theWord+'&rpp=&has_image1'
-          function getJSONP(url, cbName){
-            var $script = document.createElement('script');
-            document.body.appendChild($script);
-          }
-          $http.get(url)
-          .success(function(data){
-            $scope.newData = data;
-            $scope.newData.keyword = $scope.NewSearch;
-            myDataRef.set($scope.newData);
-
-          })
-          .error(function(err){
-            console.log(err);
-          });
-          return newData;
-        }
-      });
-        }, function (errorObject) {
-      console.log("not seeing Fb");
-    });
-
-*/
-  /*$('#searchBar').keypress(function(event){
-    if(event.keyCode == 13){
-      $('#searchButton').click();
-    }
-  });*/
-
-
   }());

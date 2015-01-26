@@ -40,3 +40,49 @@ timestamp_deleted']"success: false__proto__: Object
         alert(Object.keys(a).sort(sorter));
       };
       var fbSnapshot = fbReverse(fbObject);
+
+      ////////////SearchAgain function////////////
+
+      /*  $scope.searchAgain= function(word){
+        var newData = [];
+        var theWord = word;
+        var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=images,heading,location&heading='+theWord+'&rpp=&has_image1'
+        function getJSONP(url, cbName){
+          var $script = document.createElement('script');
+          document.body.appendChild($script);
+        }
+        $http.get(url)
+        .success(function(data){
+          $scope.newData = data;
+          $scope.newData.keyword = $scope.NewSearch;
+          myDataRef.set($scope.newData);
+
+          })
+          .error(function(err){
+            console.log(err);
+            });
+            return newData;
+          }
+          });
+          }, function (errorObject) {
+            console.log("not seeing Fb");
+            });
+
+            */
+            /*$('#searchBar').keypress(function(event){
+              if(event.keyCode == 13){
+                $('#searchButton').click();
+              }
+              });*/
+
+
+
+              //////get in itemcontroller////////
+              $http.get('https://clistapp.firebaseio.com/' + id + '/postings.json')
+              .success(function(data){
+                resultItem = data;
+                console.log("some DATA "+resultItem)
+                })
+                .error(function(err){
+                  console.log(err);
+                  });

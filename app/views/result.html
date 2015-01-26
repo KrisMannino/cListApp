@@ -1,0 +1,54 @@
+<div class="container navbar" ng-controller="MainController">
+  <div class="col-md-4 topnav">
+    <div class="col-xs-2 col-xs-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+      <a type="button" ng-click="removeItem(post.$id)" class="btn btn-xs btn-default" id="removeBtn">
+        <span class="glyphicon glyphicon-remove"></span>
+      </a><a href="/#/">
+        <h1 class="center" >{{fbPostShot.keyword.term}}</h1>
+      </a>
+      <div class="btnList center">
+        <button class="listedBtn btn btn-default">login</button>
+        <button class="listedBtn btn btn-default">register</button>
+        <button class="listedBtn btn btn-default">logout</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 navsearch form-group">
+    <button class="btn btn-default" id="searchButton" ng-click="searchWord()">Search</button>
+    <button class="btn btn-default" id="searchAgainButton" ng-click="searchAgain()">SearchAgain</button>
+    <input type="text" class="form-control" id="searchBar" placeholder="Search" ng-model="NewSearch.term" ng-keyup="$event.keyCode == 13 && searchWord()"/>
+  </div>
+</div>
+
+    <div class="postPage">
+
+    <ul class="postList" >
+      <td>
+
+
+      </td>
+      <li class="postText" ng-repeat="(itemId,items) in fbPostShot.postings" ng-show"fbPostShot.postings">
+        <div class="btn-group btn-group-xs" role="group">
+          <td>
+            <a type="button" class="btn btn-primary" href="/#/{{id}}/postings/{{itemId}}" >
+              <span class="glyphicon glyphicon-plus"></span>
+            </a>
+            <a type="button" ng-click="removeItem(itemId)" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>
+          </td>
+        </div></br>
+        <div class="fbID">{{itemId}}</div>
+        <a>{{ items.heading }}</a></br>
+        <img class="postImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} /></br>
+        <a> {{items.source }}</a><a>:  </a><a>{{items.price | currency : symbol : fractionSize}}</a>
+      </li>
+      <div class="noResults" ng-show="!results.postings" >
+        <p>There are no results avaiable for you.</p>
+
+      </div>
+      </li>
+    </ul>
+
+
+  </div>

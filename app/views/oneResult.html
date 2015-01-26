@@ -1,0 +1,28 @@
+<div class="btn-group btn-group-xs" role="group"   ng-controller="ItemController">
+  <td>
+    <a type="button" class="btn btn-primary" href="/#/">
+      <span class="glyphicon glyphicon-plus"></span>
+
+    </a>
+    <a type="button" class="btn btn-default" ng-click"goBoom()">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+    <a type="button" ng-click="removeContact(items)" class="btn btn-xs btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </a>
+  </td>
+</br>
+<h3>One Result Page{{resultItem.heading}}</h3>
+<h3>$id {{ keyword.term }}</h3>
+<ul class="resultsList" >
+  <li class="resultsText" ng-repeat="items in resultItem">
+    <a>items{{ items.price }}</a></br>
+  </li>
+</ul>
+<p>1{{ItemController.heading}}</p></br>
+<p>2{{itemController.resultItem.heading}}</p></br>
+<p>3{{itemController.heading}}</p></br>
+<p>4{{itemController.resultItem.postings.heading}}</p></br>
+<p>5{{postings}}</p>
+<img ng-src={{show.postings.image}}</img>
+</div>
