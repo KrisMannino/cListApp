@@ -9,6 +9,8 @@ legal values are [
 'immortal', 'deleted', 'state', 'flagged_status',
 timestamp_deleted']"success: false__proto__: Object
 
+&heading='+theWord+'
+has_image1&
 
 <li ng-show="!results.postings"><img src="http://rs127.pbsrc.com/albums/p123/hatsuharu555/dancingcat.gif~c200"/>
 <p>No Results</p>

@@ -15,23 +15,29 @@ body{
 h1{
   color: white;
   text-align: center;
-  font-size: 7em;
+  font-size: 5em;
 }
 .navbar, .sidebar, .mainbody {
   border: solid black;
 }
+#cHeader{
+  text-decoration: none;
+}
 a{
   color: black;
+  text-decoration: none;
 }
 a:hover{
   color: #337ab7;
-  text-underline-position: none;
+  text-decoration: none;
 }
 .btn-primary{
   background-color: black;
 }
 .resultsText:hover .btn, #searchTerm:hover .btn{
   visibility: visible;
+  text-decoration: none;
+
 }
 .resultsText .btn, #searchTerm .btn{
   visibility: hidden;
@@ -67,9 +73,9 @@ margin-left: 0;
 }
 #searchBar{
   margin: 4% auto;
-  height: 1.5em;
+  height: 2em;
   width: 80%;
-  font-size:3em;
+  font-size:48px;
 }
 
 /**********Sidebar & RESULTS**********************************************/
@@ -186,20 +192,52 @@ padding-top: 100px;
 #postWord  h1{
 color: black;
 }
+.postPage{
+height:600px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.postList{
 
+}
+.postList ul{
+  height: 575;
+
+}
 .postList li{
   vertical-align: left;
-  min-width: 92%;
-  height: 600px;
-border: solid black;
-}
+  min-width: 100%;
+
+/*border: solid black;
+*/}
 .postText{
   font-size: .8em;
   text-align: center;
   text-overflow: clip;
 }
 
-.postImg{float: right;margin: 0 5%;
+.postImg{
+  float: right;margin: 0 5%;
   height: 400px;
-  width: 400px;
+  width: 50%;
+  overflow: auto;
+  padding: 5px 5px;
+
+}
+.postImg img{
+  padding: 20px 0;
+}
+#postBody, #postPrice {
+  font-size: 1.6em;
+}
+#postPrice{
+  font-size: 6em;
+  color: green;
+}
+#postUrl{
+  font-size: 2.5em;
+  padding: 30px 10px;
+}
+#postHead{
+  font-size: 4em;
 }

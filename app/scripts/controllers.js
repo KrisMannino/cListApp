@@ -15,15 +15,23 @@ var ng = angular
 
   .controller('ItemController',[ "$http", "$routeParams", "$firebase", "$location", "$scope",function($http, $routeParams, $firebase, $location, $scope){
     var id = $routeParams.id;
-    var ref = new Firebase("https://clistapp.firebaseio.com/"+ id);
-
+    console.log("the id = "+id);
+    var theUrl = "https://clistapp.firebaseio.com/"+ id;
+    var ref = new Firebase(theUrl);
+    var sync = $firebase(ref);
     var fbSnapshot = {};
-    ref.once('value', function(dataSnapshot) {
+/*    var rmUrl = theUrl+"/postings/"+id;
+*/    ref.once('value', function(dataSnapshot) {
       fbSnapshot = dataSnapshot;
       var fbPostShot = {};
       $scope.fbPostShot = fbSnapshot.val();
       console.log($scope.fbPostShot);
-      })
+    })
+    var removeItem = function(){
+        sync.$remove(id);
+        console.log("removing " + id);
+/*        $location.path("/");
+*/      };
 
   }])
 
@@ -40,6 +48,7 @@ var ng = angular
     $scope.removeItem = function(id){
       sync.$remove(id);
       console.log("removing " + id)
+      $location.path("/")
     };
     var fbSnapshot = {};
         fbDataRef.once('value', function(dataSnapshot) {
@@ -81,7 +90,7 @@ var ng = angular
     };
 
   }])
-  .controller ('MainController',[ "$scope", "$http", "$firebase", function($scope, $http, $firebase){
+  .controller ('MainController',[ "$scope", "$http", "$firebase", "$location",function($scope, $http, $firebase, $location){
 
    var myDataRef = new Firebase('https://clistapp.firebaseio.com/');
     var sync = $firebase(myDataRef);
@@ -97,7 +106,7 @@ var ng = angular
       var theWord = '"'+typedWord+'"';
 
       console.log(theWord);
-      var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=id,images,price,external_url,source,heading,location&heading='+theWord+'&rpp=20&has_image1&location.metro=USA-NAS'
+      var url = 'http://search.3taps.com?auth_token=11a2ac1d6fd4d8a9dcbd221445790888&retvals=id,images,price,external_url,source,body,heading,location&heading='+theWord+'&rpp=20&has_image1&location.metro=USA-NAS'
       function getJSONP(url, cbName){
         var $script = document.createElement('script');
         document.body.appendChild($script);
@@ -113,6 +122,8 @@ var ng = angular
         .error(function(err){
           console.log(err);
         });
+        $location.path("/");
+
     }
   }
 ]);
