@@ -38,13 +38,19 @@ var ng = angular
 
   .controller("ResultsController",[ "$scope", "$firebase", "$http", "$location", "$routeParams", function($scope, $firebase, $http, $location, $routeParams) {
     var fbDataRef = new Firebase('https://clistapp.firebaseio.com/');
-/*    fbDataRef.setWithPriority( keyword );
-*/    var sync = $firebase(fbDataRef);
+    var sync = $firebase(fbDataRef);
     var fbArray = sync.$asArray();
+
+    /*$scope.cycleThru = function(){
+      for (var i =0;i<fbArray.length;i++)
+      {
+        console.log("hlleo");
+        }
+    }; $scope.cycleThru();*/
+
       $scope.newData = fbArray;
 
-/*    fbObject.$bindTo($scope, "newData");
-*/
+
     $scope.removeItem = function(id){
       sync.$remove(id);
       console.log("removing " + id)
@@ -57,14 +63,37 @@ var ng = angular
 
         console.log(fbSnapshotdata);
 
-       fbSnapshot.forEach(function(fbSearch) {
-          var key = fbSearch.val();
-          var fbId = fbSearch.key();
 
-          var searchKey = key.keyword.term;
+       fbSnapshot.forEach(function(fbSearch) {
+
+          var word1 = fbSearch.val();
+          var id1 = fbSearch.key();
+          /*console.log(searchKey);*/
+          console.log("id "+id1);
+         fbSnapshot.forEach(function(fbSearchlvl2) {
+            var id2 = fbSearchlvl2.key();
+            var word2 = fbSearchlvl2.val();
+            console.log("id2 = "+id2);
+            console.log("id1 "+id1);
+            if(id1!=id2){
+                if(word1.keyword.term == word2.keyword.term){
+                  var fbDataRef2 = new Firebase("https://clistapp.firebaseio.com/"+id2);
+                  console.log("https://clistapp.firebaseio.com/"+id2);
+                  console.log(word2)
+                  var sync2 = $firebase(fbDataRef2);
+                  sync2.$remove(id1);
+                  sync2.$set(word2);
+                  console.log("2ord =  "+word2.keyword.term);
+                  console.log("1ord "+word1.keyword.term);
+                  console.log("id2 = "+id2);
+                  console.log("id1 "+id1);
+                }
+              }console.log("nope");
+
+          })
+        /*  var searchKey = key.keyword.term;
           var fbUpdateData;
-          /*console.log(searchKey);
-          console.log("id "+fbId);*/
+          */
 
         })
       })
@@ -97,6 +126,7 @@ var ng = angular
     var profileObject = sync.$asObject();
 
     profileObject.$bindTo($scope, "data");
+
 
     $scope.searchWord= function(){
       var newData = [];
