@@ -21,7 +21,7 @@
         <li class="resultsText" ng-repeat="(itemId,items) in results.postings | limitTo:10 " ng-show"results.postings">
           <div class="btn-group btn-group-xs" role="group">
             <td>
-              <a type="button" class="btn btn-primary" href="/#/{{id}}/postings/{{itemId}}" >
+              <a type="button" class="btn btn-primary" href="/#/{{post.$id}}/postings/{{itemsId}}" >
                 <span class="glyphicon glyphicon-plus"></span>
               </a>
               <a type="button" ng-click="removeItem(itemId)" class="btn btn-xs btn-default">

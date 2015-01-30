@@ -15,13 +15,13 @@
 <h3>One Result Page{{resultItem.heading}}</h3>
 <h3>$id {{ keyword.term }}</h3>
 <ul class="resultsList" >
-  <li class="resultsText" ng-repeat="items in resultItem">
+  <li class="resultsText" ng-repeat="items in results.postings">
     <a>items{{ items.price }}</a></br>
   </li>
 </ul>
-<p>1{{ItemController.heading}}</p></br>
-<p>2{{itemController.resultItem.heading}}</p></br>
-<p>3{{itemController.heading}}</p></br>
+<p>1{{items.heading}}</p></br>
+<p>2{{itemId}}</p></br>
+<p>3{{$id}}</p></br>
 <p>4{{itemController.resultItem.postings.heading}}</p></br>
 <p>5{{postings}}</p>
 <img ng-src={{show.postings.image}}</img>

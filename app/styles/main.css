@@ -227,8 +227,10 @@ height:600px;
 .postImg img{
   padding: 20px 0;
 }
-#postBody, #postPrice {
+#postBody {
   font-size: 1.6em;
+  overflow: auto;
+  height: 400px;
 }
 #postPrice{
   font-size: 6em;

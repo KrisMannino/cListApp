@@ -20,6 +20,11 @@ var ng = angular
 			controller: 'ItemController'
 
 		})
+		.when('/login', {
+			templateUrl: 'views/login.html',
+			controller: 'LoginController',
+			controllerAs: 'login'
+		})
 
 		.otherwise({redirectTo: '/'});
 	})
