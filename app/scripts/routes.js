@@ -8,7 +8,7 @@ var ng = angular
 		$routeProvider
 		.when('/', {
 			templateUrl: 'views/main.html',
-			controller: 'MainController'
+			controller: 'ResultsController'
 		})
 		.when('/:id', {
 			templateUrl: 'views/result.html',
@@ -17,13 +17,16 @@ var ng = angular
 		})
 		.when('/:id/postings/:itemId', {
 			templateUrl: 'views/oneResult.html',
-			controller: 'ItemController'
+			controller: 'SinItemController'
 
+		})
+		.when('/user', {
+			templateUrl: 'views/login.html',
+			controller: 'UserController'
 		})
 		.when('/login', {
 			templateUrl: 'views/login.html',
-			controller: 'LoginController',
-			controllerAs: 'login'
+			controller: 'ResultsController'
 		})
 
 		.otherwise({redirectTo: '/'});

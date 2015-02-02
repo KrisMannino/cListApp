@@ -34,7 +34,7 @@ a:hover{
 .btn-primary{
   background-color: black;
 }
-.resultsText:hover .btn, #searchTerm:hover .btn{
+.resultsText:hover .btn, #searchTermButton:hover .btn{
   visibility: visible;
   text-decoration: none;
 

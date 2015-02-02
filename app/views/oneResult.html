@@ -1,10 +1,10 @@
-<div class="btn-group btn-group-xs" role="group"   ng-controller="ItemController">
+<div class="btn-group btn-group-xs" role="group" ng-controller="SinItemController">
   <td>
     <a type="button" class="btn btn-primary" href="/#/">
       <span class="glyphicon glyphicon-plus"></span>
 
     </a>
-    <a type="button" class="btn btn-default" ng-click"goBoom()">
+    <a type="button" class="btn btn-default" ng-click"reSearch()">
       <span class="glyphicon glyphicon-plus"></span>
     </a>
     <a type="button" ng-click="removeContact(items)" class="btn btn-xs btn-default">
@@ -12,17 +12,16 @@
     </a>
   </td>
 </br>
-<h3>One Result Page{{resultItem.heading}}</h3>
-<h3>$id {{ keyword.term }}</h3>
+<h3>{{sinfbPostShot.heading}}</h3>
+<h3>$id {{ id }}</h3>
 <ul class="resultsList" >
-  <li class="resultsText" ng-repeat="items in results.postings">
-    <a>items{{ items.price }}</a></br>
+  <li class="resultsText" ng-repeat="images in sinfbPostShot.images">
+    <img ng-src={{images}}</img>
   </li>
 </ul>
-<p>1{{items.heading}}</p></br>
-<p>2{{itemId}}</p></br>
-<p>3{{$id}}</p></br>
-<p>4{{itemController.resultItem.postings.heading}}</p></br>
+<p>1{{sinfbArraysinfbPostShot.itemId}}</p></br>
+<p>3{{sinfbPostShot.url}}</p></br>
+<p>4{{sinfbPostShot.body}}</p></br>
 <p>5{{postings}}</p>
-<img ng-src={{show.postings.image}}</img>
+<img ng-src={{sinfbPostShot.images}}</img>
 </div>

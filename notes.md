@@ -1,3 +1,13 @@
+//////////////////////TEMP//////////////////////
+
+ng-controller="MainController"
+<div class="container side" ng-controller="ResultsController">
+<div class="col-md-8 mainbody" ng-controller="ResultsController">
+ng-controller="ItemController"
+
+
+//////////////////////TEMP//////////////////////
+
 error: "illegal value [u'url']
 for parameter retvals;
 legal values are [
@@ -11,6 +21,20 @@ timestamp_deleted']"success: false__proto__: Object
 
 &heading='+theWord+'
 has_image1&
+
+
+
+//////////////////////polling api anchor//////////////////////
+&anchor=1782720670
+
+//////////////////////cheap upate function//////////////////////
+
+console.log($scope.newData.postings[0].timestamp);
+for(var i =0; i<$scope.newData.postings.length;i++){
+  console.log(i);
+  if()
+}
+
 
 <li ng-show="!results.postings"><img src="http://rs127.pbsrc.com/albums/p123/hatsuharu555/dancingcat.gif~c200"/>
 <p>No Results</p>

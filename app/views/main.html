@@ -1,8 +1,8 @@
 <header ng-include="'views/header.html'"></header>
-<div class="container side" ng-controller="ResultsController">
+<div class="container side">
   <div class="col-md-4 sidebar">
     <ul id="searchTerm">
-      <li  ng-repeat="(id, post) in newData | orderBy: '-$id'">
+      <li  id="searchTermButton" ng-repeat="($id, post) in newData | orderBy: '-$id'">
         <td>
 
           <a type="button" ng-click="removeItem(post.$id)" class="btn btn-xs btn-default" id="removeBtn">
@@ -10,18 +10,18 @@
           </a>
         </td>
         <a href="/#/{{post.$id}}" class"resultWord">{{post.keyword.term}}</a>
-        <div class="fbID">{{post.$id}}</div>
+        <div class="fbID">post.$id ={{post.$id}}</div>
         </li>
     </ul>
   </div>
 
-  <div class="col-md-8 mainbody" ng-controller="ResultsController">
+  <div class="col-md-8 mainbody">
     <div ng-repeat="results in newData | orderBy: '-$id'">
       <ul class="resultsList" >
-        <li class="resultsText" ng-repeat="(itemId,items) in results.postings | limitTo:10 " ng-show"results.postings">
+        <li class="resultsText" ng-repeat="(itemId,items) in results.postings | limitTo:10 " ng-show"results.postings" >
           <div class="btn-group btn-group-xs" role="group">
             <td>
-              <a type="button" class="btn btn-primary" href="/#/{{post.$id}}/postings/{{itemsId}}" >
+              <a type="button" class="btn btn-primary" href="/#/{{results.$id}}/postings/{{itemId}}" >
                 <span class="glyphicon glyphicon-plus"></span>
               </a>
               <a type="button" ng-click="removeItem(itemId)" class="btn btn-xs btn-default">
@@ -32,7 +32,7 @@
 
           <div class="fbID">{{itemId}}</div>
           <a>{{ items.heading }}</a></br>
-          <img class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} /></br>
+          <img href="/#/{{post.$id}}" class="resultsImg" ng-repeat="pics in items.images | limitTo:1 " ng-src={{pics.full}} /></br>
           <a> {{items.source }}</a><a>:  </a><a>{{items.price | currency : symbol : fractionSize}}</a>
         </li>
         <div class="noResults" ng-show="!results.postings" >
