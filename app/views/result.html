@@ -26,7 +26,7 @@
       <li class="postText" ng-repeat="(itemId,items) in fbPostShot.postings | filter:filterBody" ng-show"fbPostShot.postings">
         <div class="btn-group btn-group-xs" role="group">
           <td>
-            <a type="button" class="btn btn-primary" href="/#/{{id}}/postings/{{itemId}}" >
+            <a type="button" class="btn btn-primary" href="/#/{{fbPostShot.theId}}/postings/{{itemId}}" >
               <span class="glyphicon glyphicon-plus"></span>
             </a>
             <a type="button" ng-click="removeItem(itemId)" class="btn btn-xs btn-default">
@@ -35,6 +35,11 @@
           </td>
         </div></br>
         <div class="fbID">{{itemId}}</div>
+        <div class="fbID">{{fbPostShot.theId}}</div>
+        <div class="fbID">{{$id}}</div>
+        <div class="fbID">{{results.id}}</div>
+        <div class="fbID">{{fbPostShot.$id}}</div>
+
         <a id="postHead">{{ items.heading }}</a></br>
         <a id="postUrl" href="{{items.external_url}}">{{items.external_url}}</a>
         <ul class="postImg"><li ng-repeat="pics in items.images">

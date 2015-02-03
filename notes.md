@@ -22,7 +22,61 @@ timestamp_deleted']"success: false__proto__: Object
 &heading='+theWord+'
 has_image1&
 
+.controller('ItemController',[ "$http", "$routeParams", "$firebase", "$location", "$scope",function($http, $routeParams, $firebase, $location, $scope){
+  var id = $routeParams.id;
 
+  var theUrl = "https://clistapp.firebaseio.com/"+ id;
+  var ref = new Firebase(theUrl);
+  var sync = $firebase(ref);
+  var fbSnapshot = {};
+/*    var rmUrl = theUrl+"/postings/"+id;
+*/    ref.once('value', function(dataSnapshot) {
+    /*var itemId = $routeParams.id.postings.id;*/
+    fbSnapshot = dataSnapshot;
+    var fbPostShot = {};
+    $scope.fbPostShot = fbSnapshot.val();
+/*      console.log("the postings[id] = "+$scope.fbPostShot.postings[$routeParams.id].heading);
+*/      console.log(id);
+    $scope.fbPostShot.theId = id;
+    console.log($scope.fbPostShot);
+  })
+  var removeItem = function(){
+      sync.$remove(id);
+      console.log("removing " + id);
+/*        $location.path("/");
+*/      };
+
+}])
+
+.controller('SinItemController',["$http", "$routeParams", "$firebase", "$location", "$scope",function($http, $routeParams, $firebase, $location, $scope){
+  var id = $routeParams.id;
+  console.log(id);
+  console.log($location.$$url);
+  var singleId = $location.$$url;
+  var theUrl = "https://clistapp.firebaseio.com/"+ singleId;
+  var ref = new Firebase(theUrl);
+  var sync = $firebase(ref);
+  var sinfbArray = sync.$asObject();
+console.log(sinfbArray);
+  var fbSnapshot = {};
+/*    var rmUrl = theUrl+"/postings/"+id;
+*/    ref.once('value', function(dataSnapshot) {
+    /*var itemId = $routeParams.id.postings.id;*/
+    fbSnapshot = dataSnapshot;
+    var sinfbPostShot = {};
+    $scope.sinfbPostShot = fbSnapshot.val();
+/*      console.log("the postings[id] = "+$scope.fbPostShot.postings[$routeParams.id].heading);
+*/      console.log(id);
+  })
+/*    console.log($scope.sinfbPostShot);
+*/    var removeItem = function(){
+      sync.$remove();
+      console.log("removing " + sync);
+/*        $location.path("/");
+*/      };
+
+
+}])
 
 //////////////////////polling api anchor//////////////////////
 &anchor=1782720670
