@@ -4,7 +4,7 @@
     <ul id="searchTerm">
       <li  id="searchTermButton" ng-repeat="($id, post) in newData | orderBy: '-$id'">
         <td>
-
+            <a>{{post.saved.heading}}<a>
           <a type="button" ng-click="removeItem(post.$id)" class="btn btn-xs btn-default" id="removeBtn">
             <span class="glyphicon glyphicon-remove"></span>
           </a>

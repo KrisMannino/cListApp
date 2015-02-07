@@ -27,6 +27,17 @@ var ng = angular
         console.log("removing " + id);
   /*        $location.path("/");
   */      };
+/*  $scope.saveResult = function(){
+    console.log("hello");
+    console.log($scope.sinfbPostShot);
+    console.log(id);
+    var savethis = $scope.fbPostShot;
+    var saveUrl="https://clistapp.firebaseio.com/"+ id+"/saved";
+    var ref = new Firebase(saveUrl);
+    var sync = $firebase(ref);
+    console.log(savethis);
+    sync.$push(angular.fromJson(angular.toJson(savethis)));
+ }*/
 
   }])
 
@@ -56,6 +67,17 @@ var ng = angular
         console.log("removing " + sync);
   /*        $location.path("/");
   */      };
+    $scope.saveResult = function(){
+      console.log("hello");
+      console.log($scope.sinfbPostShot);
+      console.log(id);
+      var savethis = $scope.sinfbPostShot;
+      var saveUrl="https://clistapp.firebaseio.com/"+ id+"/saved";
+      var ref = new Firebase(saveUrl);
+      var sync = $firebase(ref);
+      console.log(savethis);
+      sync.$push(angular.fromJson(angular.toJson(savethis)));
+    };$scope.saveResult();
 
 
   }])
@@ -124,7 +146,7 @@ var ng = angular
         /*console.log(dataSnapshot);*/
       })
     });
-  }, 5000);
+  }, 2000,5);
 
       $scope.newData = fbArray;
       console.log($scope.newData);

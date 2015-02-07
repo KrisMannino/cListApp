@@ -1,20 +1,6 @@
-<div class="container navbar" >
-  <div class="col-md-4 topnav">
-    <div class="col-xs-2 col-xs-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-      <a href="/#/">
-        <h1 class="center" >{{fbPostShot.keyword.term}}</h1>
-      </a>
-      <div class="btnList center">
-        <button class="listedBtn btn btn-default">helologin</button>
-        <button class="listedBtn btn btn-default">register</button>
-        <button class="listedBtn btn btn-default">logout</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-8 navsearch form-group">
-    <input type="text" class="form-control" id="searchBar" placeholder="Search" ng-model="NewSearch.term" ng-keyup="$event.keyCode == 13 && searchWord()"/>
-  </div>
-</div>
+
+<header ng-include="'views/header.html'"></header>
+
 
     <div class="postPage">
       <div class="col-md-12 form-group">
@@ -27,8 +13,10 @@
         <div class="btn-group btn-group-xs" role="group">
           <td>
             <a type="button" class="btn btn-primary" href="/#/{{fbPostShot.theId}}/postings/{{itemId}}" >
+
               <span class="glyphicon glyphicon-plus"></span>
             </a>
+            <button ng-click="saveResult()">hey</button>
             <a type="button" ng-click="removeItem(itemId)" class="btn btn-xs btn-default">
               <span class="glyphicon glyphicon-remove"></span>
             </a>
